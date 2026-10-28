@@ -1,50 +1,13 @@
 # LangChain 기초 실습 노트
 
-Gemini를 LangChain에 연결하고, 프롬프트와 체인 → 대화 기록 → 문서 검색과 RAG → 도구를 쓰는 작은 에이전트까지 익히는 Python 학습 저장소.
+Gemini를 LangChain에 연결하고, 프롬프트와 체인 → 대화 기록 → 문서 검색과 RAG 까지 익히는 Python 학습 저장소.
 학습 목표: 입력·출력·검색 근거의 직접 확인.
 
-## 학습 기록과 추가 자료
 
-- **기존 실습**: 모델 호출, Prompt/Chain, JSON 대화 저장, 청크·임베딩·InMemoryVectorStore, 멀티턴 RAG 실습. [당시 원본 기록](docs/original-study.md) 보존. 원본의 테스트 결과는 당시 실습 기록.
-- **추가 학습 자료**: 구조화 출력, 호출 방식 비교, History-aware RAG, Tool/Agent 등을 예제와 함께 구성. 학습 자료의 제공 여부와 실제 실습 완료 여부 구분.
-- **이번 검증**: [검증 기록](docs/verification.md) 참고. 실모델 응답 품질은 API 실행 후 별도로 확인.
+## 환경
 
-## 기초 학습 완료 목표
+ **Python 3.12 이상**, LangChain 1.x 계열 기준.
 
-공식 자격 기준이 아니라 이 저장소의 학습 목표.
-
-| 단계 | 직접 설명하고 실행할 내용 | 자료 / 코드 |
-| --- | --- | --- |
-| 1 | 모델 API와 LangChain 역할, 환경변수, 메시지 역할 | [기본 개념](docs/foundations.md) |
-| 2 | 템플릿 변수, `prompt \| model \| parser`, Runnable 입출력 | [basics.py](examples/basics.py) |
-| 3 | invoke, stream, batch, ainvoke 비교 | [호출 실습](examples/basics.py) |
-| 4 | 자연어 대신 스키마에 맞춘 필드 추출 | [structured.py](examples/structured.py) |
-| 5 | 대화 기록 전달·저장·초기화와 문맥 제한 | [chat.py](examples/chat.py) |
-| 6 | Document, 청크, 임베딩, 검색, 메타데이터 | [RAG 설명](docs/rag.md) |
-| 7 | 기본 RAG와 질문 재작성 RAG 비교, 출처 확인 | [rag.py](examples/rag.py) |
-| 8 | 도구 정의, 모델의 도구 요청과 실제 실행 구분 | [agent.py](examples/agent.py) |
-| 9 | 오류·지연·토큰·검색 품질을 나눠 점검 | [운영 기초](docs/practice.md) |
-
-읽은 뒤 [완료 체크리스트와 비교 실험](docs/checklist.md)에 실제 결과 기록.
-
-## 빠른 시작
-
-추가 예제는 **Python 3.12 이상**, LangChain 1.x 계열 기준. 기존 기록의 Python 3.10 환경과 구분.
-PowerShell에서 저장소 루트를 기준으로 실행.
-
-```powershell
-git clone https://github.com/SiH0215/langchain-study.git
-cd langchain-study
-py -3.12 -m venv venv
-.\venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-Copy-Item .env.example .env
-```
-
-활성화가 막히면 정책을 바꾸지 않고 `.\venv\Scripts\python.exe -m examples.basics --mode offline`처럼 직접 실행.
-`.env`에 본인의 `GOOGLE_API_KEY`를 넣고, 채팅·임베딩 모델 ID는 자신의 계정에서 사용 가능한 값으로 변경.
-샘플 ID는 공식 문서의 예시이며 계정별 제공 여부나 앞으로의 지원을 보장하지 않음.
-모델 제공사를 바꾸면 연동 클래스·패키지·키도 확인.
 
 ### 1. API 없이 흐름 확인
 
@@ -135,7 +98,7 @@ tests/test_offline.py       외부 API 없는 핵심 동작 검증
 
 ## 공식 문서
 
-2026-10-27에 확인. 공식 API를 참고해 저장소에 맞는 한국어 학습 예제 작성.
+2026-10-27에 확인. 공식 API를 참고하여 한국어 학습 예제 작성.
 
 - [개요](https://docs.langchain.com/oss/python/langchain/overview), [모델](https://docs.langchain.com/oss/python/langchain/models), [메시지](https://docs.langchain.com/oss/python/langchain/messages)
 - [Gemini 연동](https://docs.langchain.com/oss/python/integrations/chat/google_generative_ai), [임베딩](https://docs.langchain.com/oss/python/integrations/embeddings/google_generative_ai)
